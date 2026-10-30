@@ -18,12 +18,11 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Accept Android Licenses
+    - name: Accept Android SDK Licenses
       run: |
         yes | sdkmanager --licenses || true
-
-    - name: Generate Gradle Wrapper
-      run: gradle wrapper
+        mkdir -p $HOME/.android
+        echo "### Turbolinks and Android SDK Licenses" > $HOME/.android/repositories.cfg
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
